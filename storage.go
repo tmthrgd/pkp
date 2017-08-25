@@ -5,7 +5,7 @@
 
 package pkp
 
-import "golang.org/x/sync/syncmap"
+import "sync"
 
 type Storage interface {
 	Get(host string) (*Pin, error)
@@ -14,7 +14,7 @@ type Storage interface {
 }
 
 type memStorage struct {
-	m syncmap.Map
+	m sync.Map
 }
 
 func MemStorage() Storage {
